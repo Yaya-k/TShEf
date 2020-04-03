@@ -5,10 +5,18 @@
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
-from loadImage import*
+from sklearn.neighbors import NearestCentroid
+
+from sklearn.neighbors import NeighborhoodComponentsAnalysis
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+
+#from loadImage import*
 #######################################################################################################################
 
-(imagesLearn,imagesTest)=load()#chargement des images
+#(imagesLearn,imagesTest)=load()#chargement des images
 
 #######################################################################################################################
 
@@ -57,10 +65,33 @@ def extract_features(imagesLearnQuantifier,imagesTestQuantifier):
     return
 #######################################################################################################################
 
-def KPPV(metriquesImageLearn,metriquesImageTest):
-    #implementer le kppv avec scikit learn et faire un plot de la matrice de confusion
+#1 Aplle
+#2 Banana
+#3 Grape
+#4 Orange
 
-    return matriceConfusion
+def KPPV(X_train,y_train,X_test,y_test,k):
+
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train, y_train)
+    score=knn.score(X_test, y_test)
+    
+    return score
+
+def KPPVNCA(X_train,y_train,X_test,y_test,k):
+    
+    nca = NeighborhoodComponentsAnalysis()
+    nca.fit(X_train, y_train)
+    knn = KNeighborsClassifier(n_neighbors=k)
+
+    knn.fit(nca.transform(X_train), y_train)
+
+   
+    score=knn.score(nca.transform(X_test), y_test)
+    
+    return score
+
+
 
 #######################################################################################################################
 
