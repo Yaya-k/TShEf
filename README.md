@@ -10,10 +10,10 @@ Proposition d'une recette en fonction d'une image contente un fruit.<br>
 
 ## Les fruits pris en compte sont: 
 <ul>
-<li>Pomme</li>
-<li>Banane</li>
-<li>Orange</li>
- <li>Raisin</li>
+<li>Pomme => 1</li>
+<li>Banane => 2</li>
+<li>Raisin => 3</li>
+ <li>Orange => 4</li>
 </ul>
 
 
